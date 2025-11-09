@@ -1,0 +1,156 @@
+/* --------- Base --------- */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: #0B0F10;
+    /* charcoal */
+    color: #E6F2EE;
+    /* soft off-white */
+    font-family: "Press Start 2P", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    display: flex;
+    /* for sticky footer */
+    flex-direction: column;
+}
+
+/* Links (general) */
+a {
+    color: #7FFFD4;
+    text-decoration: none;
+}
+
+/* mint */
+a:hover,
+a:focus {
+    color: #00FF88;
+}
+
+/* neon green */
+
+/* --------- Header / Nav --------- */
+header {
+    background: #11181F;
+    /* surface */
+    border-bottom: 1px solid #1D2A33;
+}
+
+header>div {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* Logo (top-left) */
+.logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+/* Menu */
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* wraps on small screens */
+}
+
+.menu a {
+    display: inline-block;
+    padding: 10px 12px;
+    color: #E6F2EE;
+    background: transparent;
+    border: 1px solid #1D2A33;
+    border-radius: 10px;
+    font-size: 12px;
+    /* pixel fonts read better a bit smaller */
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.menu a:hover,
+.menu a:focus {
+    background: #00FF88;
+    /* neon */
+    color: #0B0F10;
+    /* dark text on neon */
+    border-color: #00FF88;
+}
+
+/* --------- Main / Hero --------- */
+main {
+    flex: 1;
+}
+
+/* pushes footer to bottom */
+section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 16px;
+}
+
+/* Centered badge/text logo */
+.logo-text {
+    margin: 60px 0 80px 0;
+    text-align: center;
+}
+
+.logo-text img {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    max-width: 520px;
+    height: auto;
+    filter: drop-shadow(0 6px 20px rgba(0, 255, 136, 0.15));
+    /* soft neon glow */
+}
+
+/* --------- Footer (sticky) --------- */
+footer {
+    background: #11181F;
+    border-top: 1px solid #1D2A33;
+}
+
+footer>div {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px;
+    text-align: center;
+    color: #9BB1AA;
+    /* muted */
+    font-size: 12px;
+}
+
+/* --------- Small screens --------- */
+@media (max-width: 640px) {
+    .menu a {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .logo img {
+        height: 34px;
+    }
+
+    .logo-text {
+        margin: 40px 0 60px 0;
+    }
+
+    .logo-text img {
+        width: 82%;
+    }
+}
