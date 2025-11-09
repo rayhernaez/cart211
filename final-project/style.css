@@ -79,7 +79,7 @@ header>div {
     border-radius: 10px;
     font-size: 12px;
     /* pixel fonts read better a bit smaller */
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    transition: background .2s, color .2s, border-color .2s;
 }
 
 .menu a:hover,
@@ -91,19 +91,20 @@ header>div {
     border-color: #00FF88;
 }
 
-/* --------- Main / Hero --------- */
+/* --------- Main / Section wrapper --------- */
 main {
     flex: 1;
 }
 
 /* pushes footer to bottom */
+
 section {
     max-width: 1100px;
     margin: 0 auto;
     padding: 40px 16px;
 }
 
-/* Centered badge/text logo */
+/* Centered badge/text logo (home) */
 .logo-text {
     margin: 60px 0 80px 0;
     text-align: center;
@@ -115,7 +116,7 @@ section {
     width: 70%;
     max-width: 520px;
     height: auto;
-    filter: drop-shadow(0 6px 20px rgba(0, 255, 136, 0.15));
+    filter: drop-shadow(0 6px 20px rgba(0, 255, 136, .15));
     /* soft neon glow */
 }
 
@@ -135,7 +136,7 @@ footer>div {
     font-size: 12px;
 }
 
-/* --------- Small screens --------- */
+/* --------- Small screens (header/home) --------- */
 @media (max-width: 640px) {
     .menu a {
         padding: 8px 10px;
@@ -155,9 +156,7 @@ footer>div {
     }
 }
 
-/* ---- About page typography & spacing ---- */
-
-/* H2: a bit smaller than H1, with vertical spacing */
+/* ---- About/How-to typography & spacing ---- */
 h2 {
     font-size: 18px;
     margin-top: 36px;
@@ -165,7 +164,7 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* Body copy uses DM Mono (you said it's already loaded) */
+/* Body copy uses DM Mono */
 p,
 ul,
 ol,
@@ -175,10 +174,9 @@ small {
     font-size: 14px;
     line-height: 1.7;
     color: #E6F2EE;
-    /* keep readable on dark bg */
+    /* readable on dark bg */
 }
 
-/* Lists: small spacing + simple indent */
 ul,
 ol {
     padding-left: 20px;
@@ -190,14 +188,13 @@ li {
     margin-bottom: 8px;
 }
 
-/* Optional: make list bullets a bit brighter on dark */
 ul li::marker,
 ol li::marker {
     color: #00FF88;
-    /* neon green */
 }
 
-/* Mobile tweaks */
+/* neon bullet */
+
 @media (max-width: 640px) {
     h2 {
         font-size: 16px;
@@ -211,5 +208,105 @@ ol li::marker {
     small {
         font-size: 13px;
         line-height: 1.6;
+    }
+}
+
+/* --------- Scene pages --------- */
+
+/* Two-column scene layout:
+   left = text (article.scene-description)
+   right = image (.scene-img)
+   Vertically centers the left content to the image height */
+section>div {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+    align-items: center;
+    /* <-- vertical centering across the row */
+}
+
+/* Ensure the left column itself centers if needed */
+.scene-description {
+    align-self: center;
+}
+
+/* Scene heading and copy */
+.scene-description h1 {
+    margin: 0 0 8px 0;
+}
+
+.scene-description p {
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+/* Choices list card */
+.choices {
+    background: #11181F;
+    /* card surface */
+    border: 1px solid #1D2A33;
+    border-radius: 12px;
+    padding: 12px 16px 12px 32px;
+    margin: 12px 0 16px 0;
+}
+
+.choices li {
+    margin-bottom: 10px;
+}
+
+.choices li:last-child {
+    margin-bottom: 0;
+}
+
+/* Scene illustration (right) */
+.scene-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #11181F;
+    /* frame behind transparent PNGs */
+    border: 1px solid #1D2A33;
+    border-radius: 14px;
+    padding: 8px;
+}
+
+/* Next button */
+.next-btn {
+    display: inline-block;
+    padding: 10px 14px;
+    background: #00FF88;
+    /* neon */
+    color: #0B0F10;
+    /* dark text on neon */
+    border: 1px solid #00FF88;
+    border-radius: 10px;
+    font-size: 12px;
+    letter-spacing: .5px;
+    transition: transform .1s, background .2s, border-color .2s, color .2s;
+}
+
+.next-btn:hover,
+.next-btn:focus {
+    background: #7FFFD4;
+    /* mint hover */
+    border-color: #7FFFD4;
+    color: #0B0F10;
+}
+
+.next-btn:active {
+    transform: translateY(1px);
+}
+
+/* Scene layout on small screens: stack items and align to start for readability */
+@media (max-width: 820px) {
+    section>div {
+        grid-template-columns: 1fr;
+        /* one column */
+        align-items: start;
+        /* reset vertical centering when stacked */
+    }
+
+    .scene-img {
+        margin-top: 8px;
     }
 }
