@@ -154,3 +154,62 @@ footer>div {
         width: 82%;
     }
 }
+
+/* ---- About page typography & spacing ---- */
+
+/* H2: a bit smaller than H1, with vertical spacing */
+h2 {
+    font-size: 18px;
+    margin-top: 36px;
+    /* space before each section title */
+    margin-bottom: 10px;
+}
+
+/* Body copy uses DM Mono (you said it's already loaded) */
+p,
+ul,
+ol,
+li,
+small {
+    font-family: "DM Mono", monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #E6F2EE;
+    /* keep readable on dark bg */
+}
+
+/* Lists: small spacing + simple indent */
+ul,
+ol {
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Optional: make list bullets a bit brighter on dark */
+ul li::marker,
+ol li::marker {
+    color: #00FF88;
+    /* neon green */
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+    h2 {
+        font-size: 16px;
+        margin-top: 28px;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    small {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+}
