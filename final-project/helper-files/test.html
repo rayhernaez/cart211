@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Defender — Home</title>
+    <meta name="description"
+        content="Data Defender is a kid-friendly web game that teaches smart online habits in 8 quick scenes." />
+
+    <!-- Optional: Google Fonts (swap later if self-hosting) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Your stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="index.html">
+                <!-- Replace with your badge/logo -->
+                <img src="assets/logo-badge.svg" alt="Data Defender badge logo" width="40" height="40" />
+                <span class="brand-name">Data Defender</span>
+            </a>
+
+            <nav class="site-nav" aria-label="Primary">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="how-to-play.html">How to Play</a></li>
+                    <li><a class="btn" href="play/scene-1.html">Play</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero container">
+            <figure class="hero-badge">
+                <!-- Big badge/mascot on the homepage -->
+                <img src="assets/badge-hero.svg" alt="" role="presentation" width="240" height="240" />
+            </figure>
+
+            <h1 class="hero-title">Train to be a <span>Data Defender</span></h1>
+            <p class="hero-tagline">8 quick scenes. Smart choices. Earn your certificate.</p>
+
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="play/scene-1.html">Start Training</a>
+                <a class="btn btn-secondary" href="how-to-play.html">How it works</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>
+                &copy; <span id="year">2025</span> Data Defender •
+                <a href="resources.html">Resources</a> •
+                <a href="credits.html">Credits</a>
+            </small>
+        </div>
+    </footer>
+
+    <script>
+        // tiny helper: keep footer year current
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
