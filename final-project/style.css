@@ -104,7 +104,7 @@ section {
     padding: 40px 16px;
 }
 
-/* Centered badge/text logo (home) */
+/* Centered badge/text logo (home & places using .logo-text) */
 .logo-text {
     margin: 60px 0 80px 0;
     text-align: center;
@@ -222,7 +222,7 @@ section>div {
     grid-template-columns: 1.2fr 1fr;
     gap: 24px;
     align-items: center;
-    /* <-- vertical centering across the row */
+    /* vertical centering across the row */
 }
 
 /* Ensure the left column itself centers if needed */
@@ -270,8 +270,9 @@ section>div {
     padding: 8px;
 }
 
-/* Next button */
-.next-btn {
+/* Next / Play Again buttons */
+.next-btn,
+.play-again-btn {
     display: inline-block;
     padding: 10px 14px;
     background: #00FF88;
@@ -283,17 +284,22 @@ section>div {
     font-size: 12px;
     letter-spacing: .5px;
     transition: transform .1s, background .2s, border-color .2s, color .2s;
+    margin-top: 12px;
+    /* space above button (helps on result pages) */
 }
 
 .next-btn:hover,
-.next-btn:focus {
+.next-btn:focus,
+.play-again-btn:hover,
+.play-again-btn:focus {
     background: #7FFFD4;
     /* mint hover */
     border-color: #7FFFD4;
     color: #0B0F10;
 }
 
-.next-btn:active {
+.next-btn:active,
+.play-again-btn:active {
     transform: translateY(1px);
 }
 
@@ -303,10 +309,33 @@ section>div {
         grid-template-columns: 1fr;
         /* one column */
         align-items: start;
-        /* reset vertical centering when stacked */
+        /* reset when stacked */
     }
 
     .scene-img {
         margin-top: 8px;
     }
+}
+
+/* --------- Result pages (pass/fail) --------- */
+/* PASS page centering (has a .logo-text certificate image) */
+section:has(.logo-text) {
+    text-align: center;
+}
+
+/* FAIL page centering (no .logo-text but has .play-again-btn) */
+section:has(.play-again-btn):not(:has(.logo-text)) {
+    text-align: center;
+}
+
+/* Spacing under the big result heading (e.g., "You Failed!") */
+section:has(.play-again-btn) h1 {
+    margin-bottom: 16px;
+    /* feels like padding under the header */
+    padding-bottom: 8px;
+}
+
+/* Slightly tighter spacing for the lines of meta (alias/score/date) */
+section:has(.play-again-btn) p {
+    margin: 6px 0;
 }
