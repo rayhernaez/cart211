@@ -21,6 +21,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
         rel="stylesheet">
+
+    <!-- Script -->
+    <script src="../assets/js/script.js" defer></script>
 </head>
 
 <body>
@@ -41,6 +44,23 @@
             </nav>
         </div>
     </header>
+
+    <!-- Alias modal -->
+    <div class="modal-overlay" id="alias-modal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-labelledby="aliasTitle" aria-modal="true">
+            <h2 id="aliasTitle">Choose an Alias</h2>
+            <p class="modal-tip">
+                Don't use your real name.<br>
+                <span class="modal-note">(max 12 characters)</span>
+            </p>
+
+            <label for="aliasInput" class="visually-hidden">Alias</label>
+            <input id="aliasInput" type="text" maxlength="12" placeholder="e.g., cool dude" autocomplete="off" />
+
+            <button id="aliasOk" class="primary-btn">OK</button>
+            <p id="aliasError" class="alias-error" aria-live="polite"></p>
+        </div>
+    </div>
 
     <main>
         <section>

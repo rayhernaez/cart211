@@ -317,6 +317,55 @@ section>div {
     }
 }
 
+/* Home PLAY button */
+.home-cta {
+    text-align: center;
+    margin-top: 24px;
+    /* space above the button (under the logo) */
+}
+
+.play-btn-large {
+    display: inline-block;
+    padding: 14px 22px;
+    /* bigger touch target */
+    background: #00FF88;
+    /* neon */
+    color: #0B0F10;
+    /* dark text on neon */
+    border: 1px solid #00FF88;
+    border-radius: 12px;
+    font-family: "Press Start 2P", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 14px;
+    /* slightly larger than other buttons */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform .1s, background .2s, border-color .2s, color .2s, box-shadow .2s;
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.15);
+    /* soft glow */
+}
+
+.play-btn-large:hover,
+.play-btn-large:focus {
+    background: #7FFFD4;
+    /* mint hover */
+    border-color: #7FFFD4;
+    color: #0B0F10;
+    box-shadow: 0 8px 26px rgba(127, 255, 212, 0.18);
+}
+
+.play-btn-large:active {
+    transform: translateY(1px);
+}
+
+/* optional: a bit tighter on small screens */
+@media (max-width: 640px) {
+    .play-btn-large {
+        padding: 12px 18px;
+        font-size: 13px;
+    }
+}
+
 /* --------- Result pages (pass/fail) --------- */
 /* PASS page centering (has a .logo-text certificate image) */
 section:has(.logo-text) {
@@ -338,4 +387,276 @@ section:has(.play-again-btn) h1 {
 /* Slightly tighter spacing for the lines of meta (alias/score/date) */
 section:has(.play-again-btn) p {
     margin: 6px 0;
+}
+
+/* --- Choice interactions --- */
+.choice-item {
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 10px;
+    transition: background .2s, box-shadow .2s, border-color .2s;
+}
+
+.choice-item:hover {
+    background: rgba(0, 183, 255, 0.08);
+    /* soft cyan hover */
+}
+
+.choice-item.selected {
+    background: rgba(0, 255, 136, 0.14);
+    /* neon green wash */
+    box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.20) inset;
+}
+
+/* Hide NEXT until a choice is made */
+.scene-description .next-btn {
+    display: none;
+}
+
+.scene-description .next-btn.show {
+    display: inline-block;
+}
+
+/* Disabled PLAY nav on scene/result pages */
+.menu a.is-disabled,
+.menu a[aria-disabled="true"] {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.55;
+    background: transparent;
+    border-color: #1D2A33;
+    color: #E6F2EE;
+}
+
+.menu a.is-disabled:hover,
+.menu a.is-disabled:focus {
+    background: transparent;
+    color: #E6F2EE;
+    border-color: #1D2A33;
+}
+
+/* --- Alias Modal --- */
+body.modal-open {
+    overflow: hidden;
+}
+
+.alias-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+}
+
+.alias-modal {
+    width: 100%;
+    max-width: 420px;
+    background: #11181F;
+    /* surface */
+    border: 1px solid #1D2A33;
+    border-radius: 14px;
+    padding: 20px 18px 16px 18px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .45);
+}
+
+.alias-modal h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.alias-modal p,
+.alias-modal label,
+.alias-modal small {
+    font-family: "DM Mono", monospace;
+    color: #E6F2EE;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.alias-tip {
+    color: #9BB1AA;
+    /* muted */
+    font-size: 13px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+}
+
+.alias-field {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #0B0F10;
+    /* charcoal */
+    border: 1px solid #1D2A33;
+    color: #E6F2EE;
+    font-family: "DM Mono", monospace;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.alias-field:focus {
+    border-color: #00FF88;
+    /* neon */
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, .15);
+}
+
+.alias-error {
+    margin-top: 6px;
+    color: #FF4D6D;
+    /* error */
+    font-size: 12px;
+    min-height: 16px;
+    /* reserve space so layout doesn't jump */
+}
+
+.alias-actions {
+    margin-top: 14px;
+    text-align: right;
+}
+
+.modal-btn {
+    display: inline-block;
+    padding: 10px 14px;
+    background: #00FF88;
+    /* neon */
+    color: #0B0F10;
+    border: 1px solid #00FF88;
+    border-radius: 10px;
+    font-size: 12px;
+    letter-spacing: .5px;
+    transition: transform .1s, background .2s, border-color .2s, color .2s, opacity .2s;
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+    background: #7FFFD4;
+    /* mint hover */
+    border-color: #7FFFD4;
+    color: #0B0F10;
+}
+
+.modal-btn:active {
+    transform: translateY(1px);
+}
+
+.modal-btn[disabled] {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+/* --- Modal (alias) --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    /* hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-card {
+    background: #11181F;
+    border: 1px solid #1D2A33;
+    border-radius: 14px;
+    width: min(520px, 92vw);
+    padding: 20px 18px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.modal-card h2 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+}
+
+.modal-tip {
+    margin: 4px 0 14px 0;
+    font-family: "DM Mono", monospace;
+    font-size: 14px;
+    color: #9BB1AA;
+}
+
+/* Input */
+#aliasInput {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #1D2A33;
+    background: #0B0F10;
+    color: #E6F2EE;
+    font-family: "DM Mono", monospace;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+#aliasInput:focus {
+    border-color: #00FF88;
+    box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
+}
+
+/* OK button (matches your neon style) */
+.primary-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #00FF88;
+    color: #0B0F10;
+    border: 1px solid #00FF88;
+    border-radius: 10px;
+    font-size: 12px;
+    letter-spacing: .5px;
+    transition: transform .1s, background .2s, border-color .2s, color .2s;
+    cursor: pointer;
+}
+
+.primary-btn:hover,
+.primary-btn:focus {
+    background: #7FFFD4;
+    border-color: #7FFFD4;
+    color: #0B0F10;
+}
+
+.primary-btn:active {
+    transform: translateY(1px);
+}
+
+/* Error text */
+.alias-error {
+    min-height: 18px;
+    /* reserves space */
+    margin: 8px 0 0 0;
+    font-family: "DM Mono", monospace;
+    font-size: 13px;
+    color: #FF4D6D;
+    /* error color */
+}
+
+/* a11y utility */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+.modal-note {
+    display: inline-block;
+    margin-top: 4px;
+    font-family: "DM Mono", monospace;
+    font-size: 13px;
+    color: #9BB1AA;
 }
