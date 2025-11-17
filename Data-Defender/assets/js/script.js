@@ -1,4 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
+    /* background audio loop */
+    (function () {
+        var base = (location.pathname.indexOf("/play/") !== -1 || location.pathname.indexOf("/result/") !== -1) ? ".." : ".";
+        var bgm = new Audio(base + "/assets/audio/glitch-sound.mp3");
+        bgm.loop = true;
+        bgm.volume = 0.2;
+        var startAudio = function () {
+            bgm.play().catch(function () { });
+        };
+        startAudio();
+        var unlock = function () {
+            startAudio();
+            document.removeEventListener("click", unlock);
+            document.removeEventListener("keydown", unlock);
+            document.removeEventListener("touchstart", unlock);
+        };
+        document.addEventListener("click", unlock);
+        document.addEventListener("keydown", unlock);
+        document.addEventListener("touchstart", unlock);
+    })();
+
     function getProgress() {
         // reads progress from localStorage; creates a new one if empty
         try {
@@ -125,10 +146,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Shuffle the <li> visually
         var itemsToShuffle = Array.prototype.slice.call(originalItems);
-        for (var i = itemsToShuffle.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = itemsToShuffle[i];
-            itemsToShuffle[i] = itemsToShuffle[j];
+        for (var i2 = itemsToShuffle.length - 1; i2 > 0; i2--) {
+            var j = Math.floor(Math.random() * (i2 + 1));
+            var temp = itemsToShuffle[i2];
+            itemsToShuffle[i2] = itemsToShuffle[j];
             itemsToShuffle[j] = temp;
         }
         // Put the shuffled items back into the list
@@ -251,7 +272,6 @@ document.addEventListener("DOMContentLoaded", function () {
         var allEls = section.querySelectorAll("*");
         for (var t = 0; t < allEls.length; t++) {
             var node = allEls[t];
-            // look at each child text node (not HTML tags)
             for (var u = 0; u < node.childNodes.length; u++) {
                 var child = node.childNodes[u];
                 if (child.nodeType === 3) {
